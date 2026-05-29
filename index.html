@@ -374,9 +374,9 @@
     <a href="#about" class="nav-name-link">Xinyi Chen</a>
     <a href="#about">About</a>
     <a href="#news">News</a>
+    <a href="#education">Education</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
     <a href="#awards">Awards</a>
     <a href="#contact">Contact</a>
   </div>
@@ -431,6 +431,29 @@
   </ul>
 </div>
 
+<!-- EDUCATION -->
+<div class="section-wrap" id="education">
+  <div class="section-title">📖 Education</div>
+  <div class="edu-list">
+    <div class="edu-item">
+      <div class="edu-left">2025.08–2027.08</div>
+      <div>
+        <div class="edu-school">Hong Kong University of Science and Technology (Guangzhou)</div>
+        <div class="edu-degree">MPhil · Computational Media &amp; Arts · SIIE Lab · HCI Track</div>
+        <div class="edu-note">Full Scholarship (¥10,000/month) · GPA 4.30/4.30 · QS Rank #44 · Courses: HCI, AI Foundations, Social Media &amp; Creativity, VR</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-left">2021.09–2025.06</div>
+      <div>
+        <div class="edu-school">Chongqing University</div>
+        <div class="edu-degree">LLB · School of Law · 985 / Double First-Class University</div>
+        <div class="edu-note">Outstanding Graduate · GPA 3.72/4.0 · Rank 4/150 · Avg 89.61 · Courses: Civil Law, Criminal Law, Administrative Law, International Law, Python</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- EXPERIENCE -->
 <div class="section-wrap" id="experience">
   <div class="section-title">💼 Experience</div>
@@ -449,13 +472,31 @@
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-left">2025.06–present<br>Remote</div>
+      <div class="exp-left">2026.05–2026.07<br>Guangzhou, CN</div>
       <div>
-        <div class="exp-title">Product Manager (Part-time)</div>
-        <div class="exp-org"><a href="https://zicus.cn" target="_blank">Zicus Technology (智科自动化)</a> · AI Companion Hardware</div>
+        <div class="exp-title">产品经理实习生</div>
+        <div class="exp-org"><a href="https://www.zicus.cn" target="_blank">智科自动化（Zicus Technology）</a> · FA零部件行业</div>
         <ul class="exp-bullets">
-          <li>Led early-stage product research and 0→1 product definition for AI companion hardware line.</li>
-          <li>Conducted competitive analysis, user research, and wrote product specifications for MVP feature set.</li>
+          <li>深入<strong>3家典型工厂</strong>实地调研，覆盖汽车零部件、3C电子、新能源三大行业场景；通过现场观察与半结构化访谈，梳理产线自动化痛点与人工操作瓶颈，输出<strong>BRD（商业需求文档）</strong>。</li>
+          <li>基于行业报告与企业内部数据完成<strong>市场规模量化分析</strong>：目标赛道年需求量约<strong>120万套</strong>，CAGR 18%，头部玩家CR5＜30%，存在明确差异化机会；输出<strong>MRD（市场需求文档）</strong>定义MVP功能边界。</li>
+          <li>主导竞品对标分析：选取国内外<strong>5款核心竞品</strong>，从功能覆盖度、定价策略、交付周期、售后体系四个维度建立对比矩阵，识别出"中小工厂快速部署"与"柔性换线适配"两个差异化切入点。</li>
+        </ul>
+        <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
+          <img src="assets/zicus-arm.jpg" alt="Zicus Robot Arm" style="width:160px;height:auto;border-radius:4px;border:1px solid #e0e0e0;object-fit:cover;">
+          <img src="assets/zicus-cnc.jpg" alt="Zicus CNC Machine" style="width:160px;height:auto;border-radius:4px;border:1px solid #e0e0e0;object-fit:cover;">
+        </div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-left">2026.01–2026.04<br>Guangzhou, CN</div>
+      <div>
+        <div class="exp-title">产品助理实习生</div>
+        <div class="exp-org">新宠工厂科技 · AI 伴侣机器人 <em>Lito</em>（妮豆）</div>
+        <ul class="exp-bullets">
+          <li>爬取并分析 <strong>3,000+</strong> 条社交媒体与电商评论；开展12场深度访谈；识别4大核心痛点；撰写<strong>30+页PRD</strong>推动4个模块进入研发。</li>
+          <li>设计刺激-响应映射表（12类输入→20+种情绪反馈）；标注规范实现<strong>86%情绪识别准确率</strong>，内部测试自然度4.6/5.0。</li>
+          <li>与嵌入式工程师协作解决触觉传感器延迟：<strong>1.2s → 0.4s (−67%)</strong>，降低项目延期风险30%。</li>
+          <li>用Python分析行为日志；验证"主动安慰"手势使交互时长延长<strong>28%</strong>。通过Few-shot + CoT prompt engineering优化情绪模型。</li>
         </ul>
       </div>
     </div>
@@ -469,33 +510,13 @@
 
     <!-- Project 1: JudgmentLens -->
     <div class="paper-card">
-      <div class="paper-thumb thumb-jl">
-        <!-- Inline SVG diagram placeholder -->
-        <svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
-          <rect width="160" height="110" fill="#f4f8ff"/>
-          <!-- Timeline bar -->
-          <rect x="12" y="20" width="136" height="6" rx="3" fill="#c8d8f0"/>
-          <circle cx="30" cy="23" r="5" fill="#1772d0"/>
-          <circle cx="60" cy="23" r="5" fill="#1772d0" opacity=".6"/>
-          <circle cx="95" cy="23" r="5" fill="#1772d0" opacity=".4"/>
-          <circle cx="130" cy="23" r="5" fill="#1772d0" opacity=".3"/>
-          <!-- Evidence boxes -->
-          <rect x="12" y="36" width="52" height="28" rx="3" fill="#e0ecff" stroke="#b0ccee" stroke-width="1"/>
-          <rect x="70" y="36" width="78" height="28" rx="3" fill="#e8f4e0" stroke="#b0d0a0" stroke-width="1"/>
-          <text x="38" y="54" text-anchor="middle" font-size="8" fill="#1772d0">Plaintiff</text>
-          <text x="109" y="54" text-anchor="middle" font-size="8" fill="#2a7a2a">Defendant</text>
-          <!-- Logic tree -->
-          <line x1="80" y1="74" x2="50" y2="90" stroke="#aaa" stroke-width="1"/>
-          <line x1="80" y1="74" x2="110" y2="90" stroke="#aaa" stroke-width="1"/>
-          <circle cx="80" cy="72" r="5" fill="#f0a020"/>
-          <circle cx="50" cy="92" r="4" fill="#ccc"/>
-          <circle cx="110" cy="92" r="4" fill="#ccc"/>
-          <text x="80" y="105" text-anchor="middle" font-size="7.5" fill="#888">Reasoning Tree</text>
-        </svg>
+      <div class="paper-thumb thumb-jl" style="padding:0;background:transparent;border:none;overflow:hidden;display:flex;flex-direction:column;gap:4px;">
+        <img src="assets/judgmentlens-hero.jpg" alt="JudgmentLens Hero" style="width:160px;height:auto;border-radius:3px;border:1px solid #e0e0e0;object-fit:cover;display:block;">
+        <img src="assets/judgmentlens-detail.jpg" alt="JudgmentLens Detail" style="width:160px;height:auto;border-radius:3px;border:1px solid #e0e0e0;object-fit:cover;display:block;">
       </div>
       <div class="paper-body">
         <div class="paper-title">JudgmentLens: Interactive Visualization for Legal Judgment Comprehension</div>
-        <div class="paper-authors"><span class="me">Xinyi Chen</span>, [Advisor Name], [Co-authors TBD]</div>
+        <div class="paper-authors"><span class="me">Xinyi Chen</span>, Ruijie Li</div>
         <div class="paper-venue"><span class="conf">Target: CHI 2027</span> · In Progress</div>
         <div class="paper-desc">
           We present JudgmentLens, a multi-modal visualization system addressing cognitive barriers in legal judgment reading. Through formative study (questionnaire N=34, interview N=6), we identified three barrier types: evidence recognition, statutory citation, and judicial reasoning. The system provides timeline view, evidence contrast diagram, logic reasoning tree, layered reading (plain-language toggle), party-switching perspective, and traceable AI explanations.
@@ -516,34 +537,12 @@
 
     <!-- Project 2: CSCW AI Video -->
     <div class="paper-card">
-      <div class="paper-thumb thumb-ai">
-        <svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
-          <rect width="160" height="110" fill="#fffbf5"/>
-          <!-- Creator types -->
-          <rect x="10" y="12" width="40" height="22" rx="3" fill="#fde8c8" stroke="#f0b060" stroke-width="1"/>
-          <rect x="60" y="12" width="40" height="22" rx="3" fill="#c8e8fd" stroke="#60a0f0" stroke-width="1"/>
-          <rect x="110" y="12" width="40" height="22" rx="3" fill="#d8f8c8" stroke="#60c060" stroke-width="1"/>
-          <text x="30" y="26" text-anchor="middle" font-size="7" fill="#c06010">Serial</text>
-          <text x="80" y="26" text-anchor="middle" font-size="7" fill="#1060c0">Premium</text>
-          <text x="130" y="26" text-anchor="middle" font-size="7" fill="#206020">Operator</text>
-          <!-- AI workflow arrows -->
-          <line x1="30" y1="34" x2="30" y2="48" stroke="#aaa" stroke-width="1" marker-end="url(#arr)"/>
-          <line x1="80" y1="34" x2="80" y2="48" stroke="#aaa" stroke-width="1"/>
-          <line x1="130" y1="34" x2="130" y2="48" stroke="#aaa" stroke-width="1"/>
-          <!-- AI box -->
-          <rect x="10" y="48" width="140" height="22" rx="3" fill="#f0e8ff" stroke="#c090ee" stroke-width="1"/>
-          <text x="80" y="63" text-anchor="middle" font-size="8" fill="#7030c0">AI Generation Layer</text>
-          <!-- Output -->
-          <line x1="80" y1="70" x2="80" y2="82" stroke="#aaa" stroke-width="1"/>
-          <rect x="30" y="82" width="100" height="18" rx="3" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
-          <text x="80" y="94" text-anchor="middle" font-size="7.5" fill="#555">Narrative Video Output</text>
-          <!-- Label -->
-          <text x="80" y="108" text-anchor="middle" font-size="7" fill="#aaa">N=22 interviews · 304pp transcript</text>
-        </svg>
+      <div class="paper-thumb thumb-ai" style="padding:0;background:transparent;border:none;overflow:hidden;">
+        <img src="assets/cscw-workflow.png" alt="CSCW Workflow Diagram" style="width:160px;height:auto;border-radius:3px;border:1px solid #e0e0e0;object-fit:cover;display:block;">
       </div>
       <div class="paper-body">
         <div class="paper-title">From Immigrant to Native: Workflow Patterns of AI-Generated Narrative Video Creators</div>
-        <div class="paper-authors"><span class="me">Xinyi Chen</span>, [Advisor Name], [Co-authors TBD]</div>
+        <div class="paper-authors">Yuelu Li, <span class="me">Xinyi Chen</span>, Chengcheng Zhao</div>
         <div class="paper-venue"><span class="conf">Target: CSCW 2026</span> · Manuscript in Preparation</div>
         <div class="paper-desc">
           We conducted semi-structured interviews (N=22) with AI narrative video creators on Chinese platforms, covering serial-delivery, premium-project, and account-operation creator types. Through inductive thematic analysis of 304-page transcripts, we identified three workflow patterns and propose a theoretical framework distinguishing <em>"AIGC Immigrants"</em> vs. <em>"AIGC Natives"</em>—revealing divergent understandings of creative control, tool collaboration, and quality standards.
@@ -562,21 +561,9 @@
 
     <!-- Project 3: AI Companion Robot -->
     <div class="paper-card">
-      <div class="paper-thumb thumb-holo">
-        <svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
-          <rect width="160" height="110" fill="#f5fff8"/>
-          <!-- Robot face -->
-          <rect x="50" y="20" width="60" height="60" rx="12" fill="#d8f8e0" stroke="#80c880" stroke-width="1.5"/>
-          <circle cx="70" cy="45" r="7" fill="#fff" stroke="#80c880" stroke-width="1"/>
-          <circle cx="90" cy="45" r="7" fill="#fff" stroke="#80c880" stroke-width="1"/>
-          <circle cx="70" cy="45" r="3" fill="#40a060"/>
-          <circle cx="90" cy="45" r="3" fill="#40a060"/>
-          <path d="M 65 62 Q 80 70 95 62" stroke="#40a060" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-          <!-- Emotion waves -->
-          <path d="M 20 50 Q 30 40 40 50 Q 50 60 60 50" stroke="#a0d0a0" stroke-width="1" fill="none"/>
-          <path d="M 100 50 Q 110 40 120 50 Q 130 60 140 50" stroke="#a0d0a0" stroke-width="1" fill="none"/>
-          <text x="80" y="100" text-anchor="middle" font-size="8" fill="#60a060">Lito · Emotion AI · 86% accuracy</text>
-        </svg>
+      <div class="paper-thumb thumb-holo" style="padding:0;background:transparent;border:none;overflow:hidden;display:flex;flex-direction:column;gap:4px;">
+        <img src="assets/lito-table.jpg" alt="Lito Robot on Table" style="width:160px;height:auto;border-radius:3px;border:1px solid #e0e0e0;object-fit:cover;display:block;">
+        <img src="assets/lito-closeup.jpg" alt="Lito Closeup" style="width:160px;height:auto;border-radius:3px;border:1px solid #e0e0e0;object-fit:cover;display:block;">
       </div>
       <div class="paper-body">
         <div class="paper-title">Lito (妮豆): AI Companion Robot — Product Definition &amp; Interaction Design</div>
@@ -636,29 +623,6 @@
       </div>
     </div>
 
-  </div>
-</div>
-
-<!-- EDUCATION -->
-<div class="section-wrap" id="education">
-  <div class="section-title">📖 Education</div>
-  <div class="edu-list">
-    <div class="edu-item">
-      <div class="edu-left">2025.08–2027.08</div>
-      <div>
-        <div class="edu-school">Hong Kong University of Science and Technology (Guangzhou)</div>
-        <div class="edu-degree">MPhil · Computational Media &amp; Arts · SIIE Lab · HCI Track</div>
-        <div class="edu-note">Full Scholarship (¥10,000/month) · GPA 4.30/4.30 · QS Rank #44 · Courses: HCI, AI Foundations, Social Media &amp; Creativity, VR</div>
-      </div>
-    </div>
-    <div class="edu-item">
-      <div class="edu-left">2021.09–2025.06</div>
-      <div>
-        <div class="edu-school">Chongqing University</div>
-        <div class="edu-degree">LLB · School of Law · 985 / Double First-Class University</div>
-        <div class="edu-note">Outstanding Graduate · GPA 3.72/4.0 · Rank 4/150 · Avg 89.61 · Courses: Civil Law, Criminal Law, Administrative Law, International Law, Python</div>
-      </div>
-    </div>
   </div>
 </div>
 
