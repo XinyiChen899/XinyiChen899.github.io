@@ -1,1001 +1,773 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xinyi Chen — AI Product Manager & HCI Researcher</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Noto+Serif+SC:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --black: #0a0a0a;
-            --white: #fafafa;
-            --gray-100: #f5f5f5;
-            --gray-200: #e8e8e8;
-            --gray-400: #aaaaaa;
-            --gray-600: #666666;
-            --gray-800: #333333;
-            --max: 900px;
-            --nav-h: 56px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xinyi Chen | AI PM & HCI Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #333;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #1772d0; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    strong { font-weight: 700; }
+    em { font-style: italic; }
 
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid #e5e5e5;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-inner a {
+      font-size: 13.5px;
+      color: #555;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+    .nav-inner a:hover { color: #1772d0; text-decoration: none; }
+    .nav-name-link { font-weight: 700 !important; color: #222 !important; margin-right: 8px; }
 
-        body {
-            font-family: 'Inter', 'Noto Serif SC', -apple-system, sans-serif;
-            background: var(--white);
-            color: var(--black);
-            font-size: 16px;
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
+    /* ── HERO ── */
+    #about {
+      padding: 36px 24px 28px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .about-photo {
+      width: 180px;
+      border-radius: 4px;
+      display: block;
+      background: #f0f0f0;
+      overflow: hidden;
+    }
+    .about-photo-placeholder {
+      width: 180px;
+      height: 220px;
+      background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 13px;
+      font-style: italic;
+      text-align: center;
+      line-height: 1.4;
+      padding: 16px;
+    }
+    .about-content {}
+    .about-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 4px;
+    }
+    .about-name .cn { font-size: 18px; color: #555; font-weight: 400; margin-left: 8px; }
+    .about-affil {
+      font-size: 13.5px;
+      color: #555;
+      margin-bottom: 14px;
+      line-height: 1.55;
+    }
+    .about-affil a { color: #1772d0; }
+    .about-bio {
+      font-size: 14.5px;
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .about-bio a { color: #1772d0; }
+    .about-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 16px;
+      font-size: 13.5px;
+      margin-bottom: 16px;
+    }
+    .about-links a { color: #1772d0; }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .badge {
+      display: inline-block;
+      background: #f0f4ff;
+      color: #1772d0;
+      border: 1px solid #c8d8f0;
+      border-radius: 3px;
+      font-size: 12px;
+      padding: 2px 8px;
+      font-weight: 400;
+    }
+    .badge.green { background: #f0fff4; color: #1a7a3a; border-color: #b8e0c8; }
+    .badge.gray  { background: #f5f5f5; color: #666;    border-color: #ddd; }
 
-        a { color: inherit; text-decoration: none; }
+    /* ── SECTION ── */
+    .section-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      border-top: 1px solid #e5e5e5;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 16px;
+    }
 
-        /* ─── NAV ─── */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            height: var(--nav-h);
-            background: rgba(250,250,250,0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--gray-200);
-            z-index: 100;
-        }
-        .nav-inner {
-            max-width: var(--max);
-            margin: 0 auto;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 32px;
-        }
-        .nav-name {
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-        }
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-        .nav-links a {
-            font-size: 13px;
-            color: var(--gray-600);
-            letter-spacing: 0.02em;
-            transition: color 0.15s;
-        }
-        .nav-links a:hover { color: var(--black); }
+    /* ── NEWS ── */
+    .news-list { list-style: none; }
+    .news-list li {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.6;
+      padding: 4px 0;
+      border-bottom: none;
+    }
+    .news-list li + li { margin-top: 6px; }
+    .news-date { color: #777; font-style: italic; }
+    .news-list a { color: #1772d0; }
 
-        /* Mobile */
-        .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; }
-        .hamburger span { width: 18px; height: 1.5px; background: var(--black); display: block; transition: all 0.25s; }
+    /* ── PAPERS / PROJECT CARDS ── */
+    .paper-list { display: flex; flex-direction: column; gap: 20px; }
+    .paper-card {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .paper-thumb {
+      width: 160px;
+      height: 110px;
+      border-radius: 3px;
+      background: #f4f4f4;
+      border: 1px solid #e0e0e0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .paper-thumb-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+    }
+    /* Diagram-style placeholder thumbnails */
+    .thumb-jl { background: #fafcff; }
+    .thumb-jl svg { width: 100%; height: 100%; }
+    .thumb-ai { background: #fffaf5; }
+    .thumb-holo { background: #f5fff8; }
+    .thumb-agent { background: #fdf5ff; }
+    .thumb-label {
+      font-size: 10px;
+      color: #aaa;
+      text-align: center;
+      font-style: italic;
+      line-height: 1.3;
+    }
 
-        @media (max-width: 680px) {
-            .hamburger { display: flex; }
-            .nav-links {
-                position: fixed;
-                top: var(--nav-h); left: 0; right: 0;
-                background: var(--white);
-                flex-direction: column;
-                align-items: center;
-                gap: 0;
-                border-bottom: 1px solid var(--gray-200);
-                transform: translateY(-110%);
-                opacity: 0;
-                transition: all 0.25s ease;
-                pointer-events: none;
-            }
-            .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
-            .nav-links li { width: 100%; text-align: center; }
-            .nav-links a { display: block; padding: 14px 0; font-size: 14px; }
-        }
+    .paper-body {}
+    .paper-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 3px;
+      line-height: 1.4;
+    }
+    .paper-authors {
+      font-size: 13.5px;
+      color: #666;
+      margin-bottom: 3px;
+    }
+    .paper-authors .me { font-weight: 700; color: #333; }
+    .paper-venue {
+      font-size: 13.5px;
+      color: #444;
+      margin-bottom: 6px;
+      font-style: italic;
+    }
+    .paper-venue .conf { font-style: normal; font-weight: 700; color: #e07020; }
+    .paper-desc {
+      font-size: 13.5px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+    .paper-links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .paper-links a {
+      font-size: 12.5px;
+      color: #1772d0;
+      border: 1px solid #c0cfe8;
+      border-radius: 3px;
+      padding: 1px 8px;
+    }
+    .paper-links a:hover { background: #f0f4ff; text-decoration: none; }
+    .paper-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+    .pstat {
+      font-size: 12.5px;
+      color: #555;
+    }
+    .pstat strong { color: #222; }
 
-        /* ─── HERO ─── */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: flex-end;
-            padding: calc(var(--nav-h) + 80px) 32px 80px;
-            max-width: var(--max);
-            margin: 0 auto;
-        }
-        .hero-inner { width: 100%; }
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 18px; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0 20px;
+      font-size: 14px;
+    }
+    .exp-left { color: #777; font-style: italic; font-size: 13px; padding-top: 1px; }
+    .exp-title { font-weight: 700; color: #222; font-size: 14.5px; margin-bottom: 2px; }
+    .exp-org { color: #444; margin-bottom: 6px; font-size: 13.5px; }
+    .exp-bullets { list-style: disc; padding-left: 18px; color: #555; font-size: 13.5px; }
+    .exp-bullets li { margin-bottom: 4px; line-height: 1.55; }
 
-        .hero-eyebrow {
-            font-size: 12px;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--gray-400);
-            margin-bottom: 24px;
-        }
+    /* ── EDUCATION ── */
+    .edu-list { display: flex; flex-direction: column; gap: 14px; }
+    .edu-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0 20px;
+      font-size: 14px;
+    }
+    .edu-left { color: #777; font-style: italic; font-size: 13px; padding-top: 1px; }
+    .edu-school { font-weight: 700; color: #222; font-size: 14.5px; margin-bottom: 1px; }
+    .edu-degree { color: #555; font-size: 13.5px; margin-bottom: 3px; }
+    .edu-note { color: #888; font-size: 13px; }
 
-        .hero-name {
-            font-size: clamp(52px, 10vw, 96px);
-            font-weight: 300;
-            letter-spacing: -0.03em;
-            line-height: 1.0;
-            color: var(--black);
-            margin-bottom: 8px;
-        }
-        .hero-name em {
-            font-style: normal;
-            font-family: 'Noto Serif SC', serif;
-            font-weight: 300;
-        }
+    /* ── AWARDS ── */
+    .award-list { list-style: none; }
+    .award-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 14px;
+      color: #444;
+      padding: 5px 0;
+      border-bottom: 1px dashed #eee;
+      gap: 12px;
+    }
+    .award-list li:last-child { border-bottom: none; }
+    .award-name { flex: 1; }
+    .award-level {
+      font-size: 12px;
+      color: #888;
+      white-space: nowrap;
+      font-style: italic;
+    }
 
-        .hero-title {
-            font-size: clamp(13px, 2vw, 15px);
-            color: var(--gray-600);
-            font-weight: 400;
-            letter-spacing: 0.02em;
-            margin-bottom: 48px;
-        }
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px 24px;
+    }
+    .skill-group {}
+    .skill-group-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #555;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+    .stag {
+      font-size: 12.5px;
+      color: #444;
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 3px;
+      padding: 1px 7px;
+    }
 
-        .hero-bio {
-            max-width: 520px;
-            font-size: 15px;
-            color: var(--gray-800);
-            line-height: 1.85;
-            margin-bottom: 48px;
-            border-left: 1.5px solid var(--black);
-            padding-left: 20px;
-        }
+    /* ── CONTACT ── */
+    .contact-line {
+      font-size: 14.5px;
+      color: #444;
+      line-height: 1.9;
+    }
+    .contact-line a { color: #1772d0; }
 
-        .hero-links {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-        .hero-link {
-            font-size: 13px;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--gray-600);
-            border-bottom: 1px solid var(--gray-400);
-            padding-bottom: 2px;
-            transition: color 0.15s, border-color 0.15s;
-        }
-        .hero-link:hover { color: var(--black); border-color: var(--black); }
-        .hero-link.primary {
-            color: var(--black);
-            border-color: var(--black);
-        }
+    /* ── FOOTER ── */
+    footer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 24px 36px;
+      font-size: 12.5px;
+      color: #aaa;
+    }
 
-        /* ─── DIVIDER ─── */
-        .divider {
-            border: none;
-            border-top: 1px solid var(--gray-200);
-        }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo-placeholder { width: 120px; height: 150px; }
+      .paper-card { grid-template-columns: 1fr; }
+      .paper-thumb { width: 100%; height: 120px; }
+      .exp-item, .edu-item { grid-template-columns: 1fr; }
+      .exp-left, .edu-left { font-size: 12px; }
+    }
 
-        /* ─── SECTION ─── */
-        section {
-            max-width: var(--max);
-            margin: 0 auto;
-            padding: 80px 32px;
-        }
-
-        .section-label {
-            font-size: 11px;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--gray-400);
-            margin-bottom: 40px;
-        }
-
-        /* ─── ABOUT ─── */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-            align-items: start;
-        }
-        .about-text p {
-            font-size: 15px;
-            color: var(--gray-800);
-            line-height: 1.85;
-            margin-bottom: 18px;
-        }
-        .about-text p:last-child { margin-bottom: 0; }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1px;
-            background: var(--gray-200);
-            border: 1px solid var(--gray-200);
-        }
-        .stat-cell {
-            background: var(--white);
-            padding: 28px 24px;
-        }
-        .stat-n {
-            font-size: 36px;
-            font-weight: 300;
-            letter-spacing: -0.03em;
-            line-height: 1;
-            margin-bottom: 6px;
-        }
-        .stat-desc {
-            font-size: 12px;
-            color: var(--gray-400);
-            letter-spacing: 0.03em;
-        }
-
-        .about-quote {
-            grid-column: 1 / -1;
-            margin-top: 40px;
-            padding: 24px 28px;
-            background: var(--gray-100);
-            font-size: 14px;
-            color: var(--gray-600);
-            line-height: 1.7;
-            font-style: italic;
-        }
-
-        @media (max-width: 680px) {
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
-            .about-quote { grid-column: auto; }
-        }
-
-        /* ─── PROJECTS ─── */
-        .projects-list { display: flex; flex-direction: column; }
-
-        .project-item {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 0 48px;
-            padding: 40px 0;
-            border-top: 1px solid var(--gray-200);
-        }
-        .project-item:last-child { border-bottom: 1px solid var(--gray-200); }
-
-        .project-meta { padding-top: 2px; }
-        .project-index {
-            font-size: 11px;
-            color: var(--gray-400);
-            letter-spacing: 0.1em;
-            margin-bottom: 8px;
-        }
-        .project-period {
-            font-size: 12px;
-            color: var(--gray-400);
-            margin-bottom: 12px;
-            line-height: 1.5;
-        }
-        .project-tags-list {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .ptag {
-            font-size: 11px;
-            color: var(--gray-600);
-            letter-spacing: 0.03em;
-        }
-
-        .project-body {}
-        .project-name {
-            font-size: 20px;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-            line-height: 1.3;
-            margin-bottom: 16px;
-        }
-        .project-role-badge {
-            display: inline-block;
-            font-size: 11px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--gray-400);
-            border: 1px solid var(--gray-200);
-            padding: 3px 10px;
-            margin-bottom: 20px;
-        }
-        .project-desc {
-            font-size: 14px;
-            color: var(--gray-800);
-            line-height: 1.85;
-            margin-bottom: 20px;
-        }
-        .project-desc ul { list-style: none; }
-        .project-desc li {
-            padding-left: 16px;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        .project-desc li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--gray-400);
-            font-size: 12px;
-            top: 2px;
-        }
-        .project-desc strong { font-weight: 500; color: var(--black); }
-
-        .project-numbers {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            padding-top: 16px;
-            border-top: 1px solid var(--gray-200);
-        }
-        .pnum {}
-        .pnum-value {
-            font-size: 22px;
-            font-weight: 300;
-            letter-spacing: -0.02em;
-            line-height: 1;
-            margin-bottom: 2px;
-        }
-        .pnum-label {
-            font-size: 11px;
-            color: var(--gray-400);
-            letter-spacing: 0.05em;
-        }
-
-        @media (max-width: 680px) {
-            .project-item { grid-template-columns: 1fr; gap: 16px; }
-            .project-meta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-            .project-tags-list { flex-direction: row; flex-wrap: wrap; gap: 8px; }
-        }
-
-        /* ─── EXPERIENCE ─── */
-        .exp-item {
-            padding: 40px 0;
-            border-top: 1px solid var(--gray-200);
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 0 48px;
-        }
-        .exp-item:last-child { border-bottom: 1px solid var(--gray-200); }
-
-        .exp-left { padding-top: 2px; }
-        .exp-period { font-size: 12px; color: var(--gray-400); line-height: 1.6; }
-
-        .exp-company {
-            font-size: 18px;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-            margin-bottom: 4px;
-        }
-        .exp-role-title {
-            font-size: 13px;
-            color: var(--gray-600);
-            margin-bottom: 20px;
-        }
-        .exp-details {
-            font-size: 14px;
-            color: var(--gray-800);
-            line-height: 1.85;
-        }
-        .exp-details ul { list-style: none; }
-        .exp-details li {
-            padding-left: 16px;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        .exp-details li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--gray-400);
-            font-size: 12px;
-            top: 2px;
-        }
-        .exp-details strong { font-weight: 500; color: var(--black); }
-
-        @media (max-width: 680px) {
-            .exp-item { grid-template-columns: 1fr; gap: 16px; }
-        }
-
-        /* ─── SKILLS ─── */
-        .skills-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .skills-table tr {
-            border-top: 1px solid var(--gray-200);
-        }
-        .skills-table tr:last-child {
-            border-bottom: 1px solid var(--gray-200);
-        }
-        .skills-table td {
-            padding: 18px 0;
-            vertical-align: top;
-        }
-        .skills-table td:first-child {
-            font-size: 12px;
-            color: var(--gray-400);
-            letter-spacing: 0.05em;
-            width: 180px;
-            padding-right: 48px;
-            padding-top: 20px;
-        }
-        .skills-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .chip {
-            font-size: 13px;
-            color: var(--gray-800);
-            background: var(--gray-100);
-            padding: 5px 13px;
-            letter-spacing: 0.01em;
-        }
-
-        @media (max-width: 680px) {
-            .skills-table td:first-child { width: 120px; padding-right: 24px; }
-        }
-
-        /* ─── EDUCATION ─── */
-        .edu-item {
-            padding: 40px 0;
-            border-top: 1px solid var(--gray-200);
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 0 48px;
-        }
-        .edu-item:last-child { border-bottom: 1px solid var(--gray-200); }
-
-        .edu-period { font-size: 12px; color: var(--gray-400); padding-top: 2px; }
-
-        .edu-school {
-            font-size: 18px;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-            margin-bottom: 4px;
-        }
-        .edu-degree {
-            font-size: 13px;
-            color: var(--gray-600);
-            margin-bottom: 16px;
-        }
-        .edu-details {
-            font-size: 13px;
-            color: var(--gray-600);
-            line-height: 1.7;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .edu-highlight { color: var(--black); font-weight: 500; }
-
-        @media (max-width: 680px) {
-            .edu-item { grid-template-columns: 1fr; gap: 12px; }
-        }
-
-        /* ─── AWARDS ─── */
-        .awards-list { display: flex; flex-direction: column; }
-        .award-row {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            gap: 24px;
-            padding: 18px 0;
-            border-top: 1px solid var(--gray-200);
-        }
-        .award-row:last-child { border-bottom: 1px solid var(--gray-200); }
-        .award-name { font-size: 14px; color: var(--gray-800); flex: 1; line-height: 1.5; }
-        .award-level {
-            font-size: 11px;
-            color: var(--gray-400);
-            letter-spacing: 0.05em;
-            white-space: nowrap;
-        }
-
-        /* ─── CONTACT ─── */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1px;
-            background: var(--gray-200);
-            border: 1px solid var(--gray-200);
-        }
-        .contact-cell {
-            background: var(--white);
-            padding: 28px 24px;
-        }
-        .contact-type {
-            font-size: 11px;
-            color: var(--gray-400);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-        .contact-value {
-            font-size: 14px;
-            color: var(--black);
-            word-break: break-all;
-        }
-        .contact-value a { border-bottom: 1px solid var(--gray-200); transition: border-color 0.15s; }
-        .contact-value a:hover { border-color: var(--black); }
-
-        /* ─── FOOTER ─── */
-        footer {
-            max-width: var(--max);
-            margin: 0 auto;
-            padding: 32px 32px 48px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        footer p { font-size: 12px; color: var(--gray-400); letter-spacing: 0.03em; }
-
-        /* ─── REVEAL ─── */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .reveal.visible { opacity: 1; transform: none; }
-
-        /* ─── FULL-WIDTH SEPARATOR ─── */
-        .full-hr {
-            border: none;
-            border-top: 1px solid var(--gray-200);
-            margin: 0;
-        }
-    </style>
+    /* ── SECTION DIVIDER ── */
+    .section-wrap + .section-wrap {
+      border-top: 1px solid #e5e5e5;
+    }
+  </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="nav">
-    <div class="nav-inner">
-        <div class="nav-name">Xinyi Chen</div>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="hamburger" id="hamburger">
-            <span></span><span></span><span></span>
-        </div>
-    </div>
+<nav>
+  <div class="nav-inner">
+    <a href="#about" class="nav-name-link">Xinyi Chen</a>
+    <a href="#about">About</a>
+    <a href="#news">News</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#awards">Awards</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-    <div class="hero-inner">
-        <p class="hero-eyebrow">AI Product Manager &amp; HCI Researcher</p>
-        <h1 class="hero-name"><em>陈欣怡</em><br>Xinyi Chen</h1>
-        <p class="hero-title">HKUST(GZ) · Computational Media &amp; Arts · Product / Design</p>
-        <p class="hero-bio">
-            跨学科产品人。法学背景 × HCI 系统训练，专注将 AI 能力转化为用户可感知的产品价值。相信好的产品设计始于对人的深度理解——用数据说话，以用户为中心。
-        </p>
-        <div class="hero-links">
-            <a href="#contact" class="hero-link primary">联系我</a>
-            <a href="#projects" class="hero-link">查看项目</a>
-            <a href="https://github.com/XinyiChen899" target="_blank" class="hero-link">GitHub</a>
-        </div>
+<!-- ABOUT / HERO -->
+<section id="about">
+  <div class="about-grid">
+    <!-- Photo placeholder (replace src with your photo) -->
+    <div>
+      <div class="about-photo-placeholder">
+        📷<br>Replace with<br>your photo
+      </div>
     </div>
+
+    <div class="about-content">
+      <div class="about-name">Xinyi Chen <span class="cn">陈欣怡</span></div>
+      <div class="about-affil">
+        MPhil Student · <a href="https://hkust-gz.edu.cn/" target="_blank">HKUST(GZ)</a>, Computational Media &amp; Arts<br>
+        SIIE Lab · Human-Computer Interaction<br>
+        AI Product Manager @ <a href="https://zicus.cn/" target="_blank">Zicus Technology</a>
+      </div>
+      <div class="about-bio">
+        I am an HCI researcher and AI product manager with a background in law (<a href="https://www.cqu.edu.cn/" target="_blank">Chongqing University</a>, LLB 2025). My research investigates <strong>cognitive accessibility of AI-generated information</strong> and <strong>human-AI co-creation</strong>. I believe <em>formal transparency ≠ functional transparency</em>—true user value lies in reducing cognitive barriers, not merely exposing information.
+        <br><br>
+        Currently, I lead the <strong>JudgmentLens</strong> project (target: CHI 2027), a multi-modal visualization system that improves legal judgment comprehension, and conduct interview-based research on AI-generated narrative video ecosystems (target: CSCW 2026).
+      </div>
+      <div class="about-links">
+        <a href="mailto:19947823701@163.com">📧 Email</a>
+        <a href="https://github.com/XinyiChen899" target="_blank">💻 GitHub</a>
+        <a href="#contact">💬 WeChat</a>
+        <a href="#projects">📄 Projects</a>
+      </div>
+      <div class="badge-row">
+        <span class="badge">HCI Research</span>
+        <span class="badge">AI Product</span>
+        <span class="badge green">Full Scholarship · GPA 4.30/4.30</span>
+        <span class="badge gray">QS #44 · HKUST(GZ)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<div class="section-wrap" id="news">
+  <div class="section-title">🔥 News</div>
+  <ul class="news-list">
+    <li>🎉 <em class="news-date">2026.05</em> — Personal website launched at <a href="https://XinyiChen899.github.io">XinyiChen899.github.io</a>.</li>
+    <li>🎉 <em class="news-date">2026.04</em> — Completed internship at Guangzhou Xinchong Technology as AI Product Assistant on robot <em>Lito</em> (Nidou). PRD delivered; 4 core modules entered R&amp;D.</li>
+    <li>🔬 <em class="news-date">2026.03</em> — JudgmentLens user study (N=16) completed: <strong>+42% comprehension accuracy</strong>, <strong>−35% task time</strong>, SUS 82.4.</li>
+    <li>📝 <em class="news-date">2025.12</em> — CSCW study interviews (N=22) finished. Thematic analysis ongoing.</li>
+    <li>🏫 <em class="news-date">2025.08</em> — Joined HKUST(GZ) SIIE Lab on full scholarship (¥10,000/month). MPhil program begins.</li>
+    <li>🏆 <em class="news-date">2025.06</em> — Graduated from Chongqing University with <strong>Outstanding Graduate</strong> honor. GPA 3.72/4.0, Top 4/150.</li>
+  </ul>
 </div>
 
-<hr class="full-hr">
+<!-- PROJECTS / PUBLICATIONS -->
+<div class="section-wrap" id="projects">
+  <div class="section-title">📝 Selected Projects &amp; Research</div>
+  <div class="paper-list">
 
-<!-- ABOUT -->
-<section id="about">
-    <div class="section-label reveal">About</div>
-    <div class="about-grid reveal">
-        <div class="about-text">
-            <p>
-                我是陈欣怡（Xinyi），港科大（广州）计算媒体与艺术硕士在读，研究方向为人机交互（HCI）与 AI 产品定义。本科毕业于重庆大学法学院，获法学学士及优秀毕业生荣誉。
-            </p>
-            <p>
-                法学训练赋予严谨的逻辑思维与需求分析能力，HCI 系统学习构建了从用户调研到原型设计的完整方法论。我热衷于探索"AI 如何真正服务于人"这一命题，当前聚焦于法律信息的认知可及性研究与 AI 生成内容的创作生态。
-            </p>
-            <p>
-                同时担任智科自动化（zicus.cn）产品经理，负责公司前期产品调研与定义工作，参与 AI 陪伴硬件的全流程 0→1 产品化。
-            </p>
+    <!-- Project 1: JudgmentLens -->
+    <div class="paper-card">
+      <div class="paper-thumb thumb-jl">
+        <!-- Inline SVG diagram placeholder -->
+        <svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
+          <rect width="160" height="110" fill="#f4f8ff"/>
+          <!-- Timeline bar -->
+          <rect x="12" y="20" width="136" height="6" rx="3" fill="#c8d8f0"/>
+          <circle cx="30" cy="23" r="5" fill="#1772d0"/>
+          <circle cx="60" cy="23" r="5" fill="#1772d0" opacity=".6"/>
+          <circle cx="95" cy="23" r="5" fill="#1772d0" opacity=".4"/>
+          <circle cx="130" cy="23" r="5" fill="#1772d0" opacity=".3"/>
+          <!-- Evidence boxes -->
+          <rect x="12" y="36" width="52" height="28" rx="3" fill="#e0ecff" stroke="#b0ccee" stroke-width="1"/>
+          <rect x="70" y="36" width="78" height="28" rx="3" fill="#e8f4e0" stroke="#b0d0a0" stroke-width="1"/>
+          <text x="38" y="54" text-anchor="middle" font-size="8" fill="#1772d0">Plaintiff</text>
+          <text x="109" y="54" text-anchor="middle" font-size="8" fill="#2a7a2a">Defendant</text>
+          <!-- Logic tree -->
+          <line x1="80" y1="74" x2="50" y2="90" stroke="#aaa" stroke-width="1"/>
+          <line x1="80" y1="74" x2="110" y2="90" stroke="#aaa" stroke-width="1"/>
+          <circle cx="80" cy="72" r="5" fill="#f0a020"/>
+          <circle cx="50" cy="92" r="4" fill="#ccc"/>
+          <circle cx="110" cy="92" r="4" fill="#ccc"/>
+          <text x="80" y="105" text-anchor="middle" font-size="7.5" fill="#888">Reasoning Tree</text>
+        </svg>
+      </div>
+      <div class="paper-body">
+        <div class="paper-title">JudgmentLens: Interactive Visualization for Legal Judgment Comprehension</div>
+        <div class="paper-authors"><span class="me">Xinyi Chen</span>, [Advisor Name], [Co-authors TBD]</div>
+        <div class="paper-venue"><span class="conf">Target: CHI 2027</span> · In Progress</div>
+        <div class="paper-desc">
+          We present JudgmentLens, a multi-modal visualization system addressing cognitive barriers in legal judgment reading. Through formative study (questionnaire N=34, interview N=6), we identified three barrier types: evidence recognition, statutory citation, and judicial reasoning. The system provides timeline view, evidence contrast diagram, logic reasoning tree, layered reading (plain-language toggle), party-switching perspective, and traceable AI explanations.
         </div>
-        <div>
-            <div class="about-stats">
-                <div class="stat-cell">
-                    <div class="stat-n">4+</div>
-                    <div class="stat-desc">核心项目主导</div>
-                </div>
-                <div class="stat-cell">
-                    <div class="stat-n">N=22</div>
-                    <div class="stat-desc">深度访谈执行</div>
-                </div>
-                <div class="stat-cell">
-                    <div class="stat-n">30+</div>
-                    <div class="stat-desc">页 PRD 文档</div>
-                </div>
-                <div class="stat-cell">
-                    <div class="stat-n">86%</div>
-                    <div class="stat-desc">情感识别准确率</div>
-                </div>
-            </div>
-            <div class="about-quote">
-                "形式透明 ≠ 功能透明——认知可及性才是真正的用户价值。"
-            </div>
+        <div class="paper-stats">
+          <span class="pstat">📊 Comprehension: <strong>+42%</strong></span>
+          <span class="pstat">⏱ Task time: <strong>−35%</strong></span>
+          <span class="pstat">🎯 SUS: <strong>82.4</strong></span>
+          <span class="pstat">📐 Cohen's d: <strong>≥ 1.5</strong></span>
+          <span class="pstat">👥 N=16 user study</span>
         </div>
+        <div class="paper-links">
+          <a href="https://github.com/XinyiChen899" target="_blank">Code (TBD)</a>
+          <a href="#contact">Contact for Demo</a>
+        </div>
+      </div>
     </div>
-</section>
 
-<hr class="full-hr">
-
-<!-- PROJECTS -->
-<section id="projects">
-    <div class="section-label reveal">Selected Projects</div>
-    <div class="projects-list">
-
-        <div class="project-item reveal">
-            <div class="project-meta">
-                <div class="project-index">01</div>
-                <div class="project-period">2025.09 — 至今</div>
-                <div class="project-tags-list">
-                    <span class="ptag">AI + 法律科技</span>
-                    <span class="ptag">可视化设计</span>
-                    <span class="ptag">CHI 论文</span>
-                </div>
-            </div>
-            <div class="project-body">
-                <h3 class="project-name">JudgementLens<br>法院判决交互式可视化系统</h3>
-                <div class="project-role-badge">Product Owner / 项目负责人</div>
-                <div class="project-desc">
-                    <ul>
-                        <li>通过问卷 (N=34) 与半结构化访谈 (N=6) 发现 <strong>84.29%</strong> 当事人因判决书专业冗长而产生阅读焦虑；识别证据认定、法条引用、司法推理三大障碍。</li>
-                        <li>主导设计多模态可视化系统——时间线、证据对比图、逻辑推理树、分层阅读模式（通俗语言切换）、原告被告视角切换，以及<strong>可追溯 AI 解释</strong>。</li>
-                        <li>与算法团队协作定义解释规范，通过注意力机制归因确保 AI 生成简化内容链接回原始文本，提升透明度与信任感。</li>
-                        <li>设计用户研究 (N=16) 验证效果：<strong>理解准确率 +42%，任务耗时 −35%，SUS 82.4，Cohen's d ≥ 1.5</strong>。</li>
-                    </ul>
-                </div>
-                <div class="project-numbers">
-                    <div class="pnum">
-                        <div class="pnum-value">+42%</div>
-                        <div class="pnum-label">理解准确率</div>
-                    </div>
-                    <div class="pnum">
-                        <div class="pnum-value">−35%</div>
-                        <div class="pnum-label">任务耗时</div>
-                    </div>
-                    <div class="pnum">
-                        <div class="pnum-value">82.4</div>
-                        <div class="pnum-label">SUS 可用性</div>
-                    </div>
-                    <div class="pnum">
-                        <div class="pnum-value">≥1.5</div>
-                        <div class="pnum-label">Cohen's d</div>
-                    </div>
-                </div>
-            </div>
+    <!-- Project 2: CSCW AI Video -->
+    <div class="paper-card">
+      <div class="paper-thumb thumb-ai">
+        <svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
+          <rect width="160" height="110" fill="#fffbf5"/>
+          <!-- Creator types -->
+          <rect x="10" y="12" width="40" height="22" rx="3" fill="#fde8c8" stroke="#f0b060" stroke-width="1"/>
+          <rect x="60" y="12" width="40" height="22" rx="3" fill="#c8e8fd" stroke="#60a0f0" stroke-width="1"/>
+          <rect x="110" y="12" width="40" height="22" rx="3" fill="#d8f8c8" stroke="#60c060" stroke-width="1"/>
+          <text x="30" y="26" text-anchor="middle" font-size="7" fill="#c06010">Serial</text>
+          <text x="80" y="26" text-anchor="middle" font-size="7" fill="#1060c0">Premium</text>
+          <text x="130" y="26" text-anchor="middle" font-size="7" fill="#206020">Operator</text>
+          <!-- AI workflow arrows -->
+          <line x1="30" y1="34" x2="30" y2="48" stroke="#aaa" stroke-width="1" marker-end="url(#arr)"/>
+          <line x1="80" y1="34" x2="80" y2="48" stroke="#aaa" stroke-width="1"/>
+          <line x1="130" y1="34" x2="130" y2="48" stroke="#aaa" stroke-width="1"/>
+          <!-- AI box -->
+          <rect x="10" y="48" width="140" height="22" rx="3" fill="#f0e8ff" stroke="#c090ee" stroke-width="1"/>
+          <text x="80" y="63" text-anchor="middle" font-size="8" fill="#7030c0">AI Generation Layer</text>
+          <!-- Output -->
+          <line x1="80" y1="70" x2="80" y2="82" stroke="#aaa" stroke-width="1"/>
+          <rect x="30" y="82" width="100" height="18" rx="3" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
+          <text x="80" y="94" text-anchor="middle" font-size="7.5" fill="#555">Narrative Video Output</text>
+          <!-- Label -->
+          <text x="80" y="108" text-anchor="middle" font-size="7" fill="#aaa">N=22 interviews · 304pp transcript</text>
+        </svg>
+      </div>
+      <div class="paper-body">
+        <div class="paper-title">From Immigrant to Native: Workflow Patterns of AI-Generated Narrative Video Creators</div>
+        <div class="paper-authors"><span class="me">Xinyi Chen</span>, [Advisor Name], [Co-authors TBD]</div>
+        <div class="paper-venue"><span class="conf">Target: CSCW 2026</span> · Manuscript in Preparation</div>
+        <div class="paper-desc">
+          We conducted semi-structured interviews (N=22) with AI narrative video creators on Chinese platforms, covering serial-delivery, premium-project, and account-operation creator types. Through inductive thematic analysis of 304-page transcripts, we identified three workflow patterns and propose a theoretical framework distinguishing <em>"AIGC Immigrants"</em> vs. <em>"AIGC Natives"</em>—revealing divergent understandings of creative control, tool collaboration, and quality standards.
         </div>
-
-        <div class="project-item reveal">
-            <div class="project-meta">
-                <div class="project-index">02</div>
-                <div class="project-period">CSCW 在研</div>
-                <div class="project-tags-list">
-                    <span class="ptag">AIGC 研究</span>
-                    <span class="ptag">定性分析</span>
-                    <span class="ptag">创作者经济</span>
-                </div>
-            </div>
-            <div class="project-body">
-                <h3 class="project-name">AI 生成叙事视频<br>创作者工作流与平台生态研究</h3>
-                <div class="project-role-badge">项目负责人 / 用户研究员</div>
-                <div class="project-desc">
-                    <ul>
-                        <li>完成 <strong>N=22</strong> 位半结构化访谈，覆盖短剧制作、账号运营、精品项目三类创作者，形成 304 页转录文本，采用归纳式主题分析。</li>
-                        <li>识别 AI 叙事视频生产的三大工作流模式（<strong>连载交付型 / 精品项目型 / 账号运营型</strong>），定位"输出不稳定""平台审核成本高""变现路径不确定"为共同痛点。</li>
-                        <li>提出 <strong>"AIGC 移民 vs AIGC 原住民"</strong> 用户画像理论框架，揭示二者在创作控制权理解、工具协作方式、质量控制标准上的显著差异。</li>
-                    </ul>
-                </div>
-                <div class="project-numbers">
-                    <div class="pnum">
-                        <div class="pnum-value">N=22</div>
-                        <div class="pnum-label">深度访谈</div>
-                    </div>
-                    <div class="pnum">
-                        <div class="pnum-value">304</div>
-                        <div class="pnum-label">页转录文本</div>
-                    </div>
-                    <div class="pnum">
-                        <div class="pnum-value">3</div>
-                        <div class="pnum-label">工作流模型</div>
-                    </div>
-                </div>
-            </div>
+        <div class="paper-stats">
+          <span class="pstat">👥 N=22 interviews</span>
+          <span class="pstat">📄 304 pp transcript</span>
+          <span class="pstat">🔍 3 workflow models</span>
+          <span class="pstat">💡 New theory: T2/T5 framework</span>
         </div>
-
-        <div class="project-item reveal">
-            <div class="project-meta">
-                <div class="project-index">03</div>
-                <div class="project-period">课程项目</div>
-                <div class="project-tags-list">
-                    <span class="ptag">硬件 + 软件</span>
-                    <span class="ptag">产品定义</span>
-                    <span class="ptag">交互原型</span>
-                </div>
-            </div>
-            <div class="project-body">
-                <h3 class="project-name">3D 全息植物<br>数字陪伴体</h3>
-                <div class="project-role-badge">产品设计负责人</div>
-                <div class="project-desc">
-                    <ul>
-                        <li>独立完成 3D 全息数字陪伴植物的 0→1 产品方向定义，通过用户访谈和问卷完成用户画像与场景分析。</li>
-                        <li>撰写完整 PRD，定义注视反馈、手势互动、情绪响应三大核心交互维度。</li>
-                        <li>使用 Figma 输出低保真交互原型，完成核心流程可视化呈现。</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="paper-links">
+          <a href="#contact">Contact Author</a>
         </div>
-
-        <div class="project-item reveal">
-            <div class="project-meta">
-                <div class="project-index">04</div>
-                <div class="project-period">2024</div>
-                <div class="project-tags-list">
-                    <span class="ptag">用户实验</span>
-                    <span class="ptag">统计分析</span>
-                    <span class="ptag">人机协作</span>
-                </div>
-            </div>
-            <div class="project-body">
-                <h3 class="project-name">Proactive Agent<br>主动智能体用户研究</h3>
-                <div class="project-role-badge">用户实验负责人</div>
-                <div class="project-desc">
-                    <ul>
-                        <li>设计主动智能体系统的用户评估实验，招募 <strong>32 名被试</strong>完成多轮人机协作任务。</li>
-                        <li>采集 SUS、NASA-TLX 及行为日志，运用<strong>重复测量 ANOVA 和 LMM</strong> 统计建模。</li>
-                        <li>发现"过早主动建议"导致认知负荷增加 27%，推动算法团队调整置信度阈值和触发延迟，任务完成率从 68% 提升至 <strong>81%</strong>。</li>
-                    </ul>
-                </div>
-                <div class="project-numbers">
-                    <div class="pnum">
-                        <div class="pnum-value">N=32</div>
-                        <div class="pnum-label">被试</div>
-                    </div>
-                    <div class="pnum">
-                        <div class="pnum-value">68→81%</div>
-                        <div class="pnum-label">任务完成率</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+      </div>
     </div>
-</section>
 
-<hr class="full-hr">
+    <!-- Project 3: AI Companion Robot -->
+    <div class="paper-card">
+      <div class="paper-thumb thumb-holo">
+        <svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
+          <rect width="160" height="110" fill="#f5fff8"/>
+          <!-- Robot face -->
+          <rect x="50" y="20" width="60" height="60" rx="12" fill="#d8f8e0" stroke="#80c880" stroke-width="1.5"/>
+          <circle cx="70" cy="45" r="7" fill="#fff" stroke="#80c880" stroke-width="1"/>
+          <circle cx="90" cy="45" r="7" fill="#fff" stroke="#80c880" stroke-width="1"/>
+          <circle cx="70" cy="45" r="3" fill="#40a060"/>
+          <circle cx="90" cy="45" r="3" fill="#40a060"/>
+          <path d="M 65 62 Q 80 70 95 62" stroke="#40a060" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- Emotion waves -->
+          <path d="M 20 50 Q 30 40 40 50 Q 50 60 60 50" stroke="#a0d0a0" stroke-width="1" fill="none"/>
+          <path d="M 100 50 Q 110 40 120 50 Q 130 60 140 50" stroke="#a0d0a0" stroke-width="1" fill="none"/>
+          <text x="80" y="100" text-anchor="middle" font-size="8" fill="#60a060">Lito · Emotion AI · 86% accuracy</text>
+        </svg>
+      </div>
+      <div class="paper-body">
+        <div class="paper-title">Lito (妮豆): AI Companion Robot — Product Definition &amp; Interaction Design</div>
+        <div class="paper-authors"><span class="me">Xinyi Chen</span> (Product Role)</div>
+        <div class="paper-venue">Industry Project · Guangzhou Xinchong Technology · <em>2026.01–04</em></div>
+        <div class="paper-desc">
+          Led end-to-end product definition for an AI companion robot. Scraped and analyzed 3,000+ social media reviews; conducted 12 in-depth interviews to quantify 4 core pain points (e.g., 68% reported stiff emotional responses). Designed a stimulus-response mapping table (12 inputs → 20+ emotion feedbacks) based on affective computing theory, achieving 86% emotion recognition accuracy and 4.6/5.0 interaction naturalness in internal testing.
+        </div>
+        <div class="paper-stats">
+          <span class="pstat">🗣 N=12 interviews</span>
+          <span class="pstat">📊 3,000+ reviews</span>
+          <span class="pstat">🤖 86% accuracy</span>
+          <span class="pstat">⚡ Latency: 1.2s→0.4s (−67%)</span>
+        </div>
+        <div class="paper-links">
+          <a href="#contact">Contact Author</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4: Proactive Agent -->
+    <div class="paper-card">
+      <div class="paper-thumb thumb-agent">
+        <svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
+          <rect width="160" height="110" fill="#fdf5ff"/>
+          <!-- Human-AI loop -->
+          <circle cx="45" cy="55" r="22" fill="#eeddf8" stroke="#c090e0" stroke-width="1.5"/>
+          <circle cx="115" cy="55" r="22" fill="#d8e8ff" stroke="#8090e0" stroke-width="1.5"/>
+          <text x="45" y="52" text-anchor="middle" font-size="9" fill="#7030a0">Human</text>
+          <text x="45" y="63" text-anchor="middle" font-size="8" fill="#9060b0">N=32</text>
+          <text x="115" y="52" text-anchor="middle" font-size="9" fill="#3050b0">AI</text>
+          <text x="115" y="63" text-anchor="middle" font-size="8" fill="#6070c0">Agent</text>
+          <!-- Arrows -->
+          <path d="M 67 45 Q 80 32 93 45" stroke="#9060c0" stroke-width="1.5" fill="none" marker-end="url(#a2)"/>
+          <path d="M 93 65 Q 80 78 67 65" stroke="#6090c0" stroke-width="1.5" fill="none" marker-end="url(#a2)"/>
+          <text x="80" y="30" text-anchor="middle" font-size="7.5" fill="#9060c0">proactive</text>
+          <text x="80" y="85" text-anchor="middle" font-size="7.5" fill="#6090c0">response</text>
+          <text x="80" y="105" text-anchor="middle" font-size="7" fill="#aaa">68% → 81% completion rate</text>
+        </svg>
+      </div>
+      <div class="paper-body">
+        <div class="paper-title">When to Speak Up: User Study on Proactive AI Agent Intervention Timing</div>
+        <div class="paper-authors"><span class="me">Xinyi Chen</span></div>
+        <div class="paper-venue">Course Research Project · HKUST(GZ) · <em>2024</em></div>
+        <div class="paper-desc">
+          Designed and conducted a within-subjects user experiment (N=32) evaluating proactive AI agent intervention timing. Collected SUS, NASA-TLX, and behavioral logs; applied repeated-measures ANOVA and LMM. Found that premature proactive suggestions increased cognitive load by 27%. Recommendations led to algorithm adjustments (confidence threshold, trigger delay), improving task completion rate from 68% to <strong>81%</strong>.
+        </div>
+        <div class="paper-stats">
+          <span class="pstat">👥 N=32</span>
+          <span class="pstat">📈 68%→<strong>81%</strong> completion</span>
+          <span class="pstat">🧠 Cognitive load −27%</span>
+          <span class="pstat">📐 ANOVA + LMM</span>
+        </div>
+        <div class="paper-links">
+          <a href="#contact">Contact Author</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- EXPERIENCE -->
-<section id="experience">
-    <div class="section-label reveal">Experience</div>
-    <div class="reveal">
-        <div class="exp-item">
-            <div class="exp-left">
-                <div class="exp-period">2026.01 — 2026.04<br>广东·广州</div>
-            </div>
-            <div>
-                <div class="exp-company">广州芯宠工厂科技</div>
-                <div class="exp-role-title">产品助理实习生 — AI 陪伴机器人 Lito（妮豆）</div>
-                <div class="exp-details">
-                    <ul>
-                        <li>爬虫抓取社交媒体与电商评论 <strong>3000+ 条</strong>，结合 12 场深度访谈量化识别"情感响应生硬"(68%)、"缺乏成长感"(52%) 等 4 类核心痛点；撰写 <strong>30+ 页 PRD</strong>，推动 4 个核心模块进入研发。</li>
-                        <li>基于情感计算理论与行为心理学设计"刺激-反应"映射表，覆盖 12 类输入 → 20+ 种情感反馈；标注规范使情感识别准确率达 <strong>86%</strong>，交互自然度内测 <strong>4.6/5.0</strong>。</li>
-                        <li>与嵌入式工程师协作解决触觉传感器响应延迟问题：<strong>1.2s → 0.4s（−67%）</strong>，项目延期风险降低 30%。</li>
-                        <li>Python 分析用户行为日志，验证"主动安抚"动作使单次交互时长延长 <strong>28%</strong>；通过 Prompt Engineering（Few-shot, CoT）推进情感模型构建。</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<div class="section-wrap" id="experience">
+  <div class="section-title">💼 Experience</div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-left">2026.01–2026.04<br>Guangzhou, CN</div>
+      <div>
+        <div class="exp-title">Product Assistant Intern</div>
+        <div class="exp-org">Guangzhou Xinchong Technology · AI Companion Robot <em>Lito</em> (妮豆)</div>
+        <ul class="exp-bullets">
+          <li>Scraped <strong>3,000+</strong> social media and e-commerce reviews; conducted 12 depth interviews; identified 4 core pain points; wrote <strong>30+ page PRD</strong> driving 4 modules into R&amp;D.</li>
+          <li>Designed stimulus-response mapping table (12 input types → 20+ emotion feedbacks); annotation spec achieved <strong>86% emotion recognition accuracy</strong>, 4.6/5.0 naturalness in internal test.</li>
+          <li>Collaborated with embedded engineers to resolve tactile sensor latency: <strong>1.2s → 0.4s (−67%)</strong>, reducing project delay risk by 30%.</li>
+          <li>Analyzed behavior logs with Python; validated "proactive comfort" gesture extended interaction duration by <strong>28%</strong>. Advanced emotion model via Few-shot + CoT prompt engineering.</li>
+        </ul>
+      </div>
     </div>
-</section>
-
-<hr class="full-hr">
-
-<!-- SKILLS -->
-<section id="skills">
-    <div class="section-label reveal">Skills</div>
-    <table class="skills-table reveal">
-        <tr>
-            <td>AI 工具链</td>
-            <td>
-                <div class="skills-chips">
-                    <span class="chip">Claude</span>
-                    <span class="chip">Gemini</span>
-                    <span class="chip">DeepSeek</span>
-                    <span class="chip">Kimi</span>
-                    <span class="chip">豆包</span>
-                    <span class="chip">千问</span>
-                    <span class="chip">Midjourney</span>
-                    <span class="chip">Liblib AI</span>
-                    <span class="chip">Coze</span>
-                    <span class="chip">Dify</span>
-                    <span class="chip">Prompt Engineering</span>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>数据分析</td>
-            <td>
-                <div class="skills-chips">
-                    <span class="chip">Python</span>
-                    <span class="chip">SQL</span>
-                    <span class="chip">SPSS</span>
-                    <span class="chip">Excel</span>
-                    <span class="chip">ANOVA</span>
-                    <span class="chip">LMM</span>
-                    <span class="chip">A/B Testing</span>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>设计与原型</td>
-            <td>
-                <div class="skills-chips">
-                    <span class="chip">Figma</span>
-                    <span class="chip">墨刀</span>
-                    <span class="chip">TouchDesigner</span>
-                    <span class="chip">Photoshop</span>
-                    <span class="chip">HTML/CSS</span>
-                    <span class="chip">可灵 AI</span>
-                    <span class="chip">Cursor</span>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>产品能力</td>
-            <td>
-                <div class="skills-chips">
-                    <span class="chip">用户研究</span>
-                    <span class="chip">需求分析</span>
-                    <span class="chip">PRD 撰写</span>
-                    <span class="chip">竞品分析</span>
-                    <span class="chip">MVP 定义</span>
-                    <span class="chip">敏捷开发</span>
-                    <span class="chip">Jira</span>
-                    <span class="chip">跨团队协同</span>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>语言与证书</td>
-            <td>
-                <div class="skills-chips">
-                    <span class="chip">IELTS 6.5</span>
-                    <span class="chip">CET-6 542</span>
-                    <span class="chip">法律职业资格证</span>
-                    <span class="chip">普通话二甲</span>
-                </div>
-            </td>
-        </tr>
-    </table>
-</section>
-
-<hr class="full-hr">
+    <div class="exp-item">
+      <div class="exp-left">2025.06–present<br>Remote</div>
+      <div>
+        <div class="exp-title">Product Manager (Part-time)</div>
+        <div class="exp-org"><a href="https://zicus.cn" target="_blank">Zicus Technology (智科自动化)</a> · AI Companion Hardware</div>
+        <ul class="exp-bullets">
+          <li>Led early-stage product research and 0→1 product definition for AI companion hardware line.</li>
+          <li>Conducted competitive analysis, user research, and wrote product specifications for MVP feature set.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- EDUCATION -->
-<section id="education">
-    <div class="section-label reveal">Education</div>
-    <div class="reveal">
-        <div class="edu-item">
-            <div class="edu-period">2025.08 — 2027.08</div>
-            <div>
-                <div class="edu-school">香港科技大学（广州）</div>
-                <div class="edu-degree">计算媒体与艺术 MPhil · SIIE Lab · HCI 方向</div>
-                <div class="edu-details">
-                    <span>主修：人机交互、AI 基础及应用、社交媒体与创意、虚拟现实</span>
-                    <span class="edu-highlight">全额奖学金（¥10,000/月） · GPA 4.30/4.30 · QS #44</span>
-                </div>
-            </div>
-        </div>
-        <div class="edu-item">
-            <div class="edu-period">2021.09 — 2025.06</div>
-            <div>
-                <div class="edu-school">重庆大学</div>
-                <div class="edu-degree">法学院 · 法学 LLB · 985 / 双一流</div>
-                <div class="edu-details">
-                    <span>主修：民法、商法、刑法、行政法、诉讼法、国际法、Python</span>
-                    <span class="edu-highlight">优秀毕业生 · GPA 3.72/4.0 · 综测排名 4/150 · 平均分 89.61</span>
-                </div>
-            </div>
-        </div>
+<div class="section-wrap" id="education">
+  <div class="section-title">📖 Education</div>
+  <div class="edu-list">
+    <div class="edu-item">
+      <div class="edu-left">2025.08–2027.08</div>
+      <div>
+        <div class="edu-school">Hong Kong University of Science and Technology (Guangzhou)</div>
+        <div class="edu-degree">MPhil · Computational Media &amp; Arts · SIIE Lab · HCI Track</div>
+        <div class="edu-note">Full Scholarship (¥10,000/month) · GPA 4.30/4.30 · QS Rank #44 · Courses: HCI, AI Foundations, Social Media &amp; Creativity, VR</div>
+      </div>
     </div>
-</section>
-
-<hr class="full-hr">
+    <div class="edu-item">
+      <div class="edu-left">2021.09–2025.06</div>
+      <div>
+        <div class="edu-school">Chongqing University</div>
+        <div class="edu-degree">LLB · School of Law · 985 / Double First-Class University</div>
+        <div class="edu-note">Outstanding Graduate · GPA 3.72/4.0 · Rank 4/150 · Avg 89.61 · Courses: Civil Law, Criminal Law, Administrative Law, International Law, Python</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- AWARDS -->
-<section id="awards">
-    <div class="section-label reveal">Honors & Awards</div>
-    <div class="awards-list reveal">
-        <div class="award-row">
-            <div class="award-name">第四届全国智慧城市与智能建造大学生创新创业竞赛 一等奖</div>
-            <div class="award-level">国家级</div>
-        </div>
-        <div class="award-row">
-            <div class="award-name">第八届"互联网+"大学生创新创业大赛 重庆市银奖 × 2</div>
-            <div class="award-level">省市级</div>
-        </div>
-        <div class="award-row">
-            <div class="award-name">第十八届"挑战杯"黑科技专项赛 行星级作品</div>
-            <div class="award-level">省市级</div>
-        </div>
-        <div class="award-row">
-            <div class="award-name">iCAN 大学生创新创业挑战赛 重庆市二等奖</div>
-            <div class="award-level">省市级</div>
-        </div>
-        <div class="award-row">
-            <div class="award-name">重庆市大学生创业实践项目"优秀"结题</div>
-            <div class="award-level">省级</div>
-        </div>
-        <div class="award-row">
-            <div class="award-name">重庆大学优秀毕业生 · 优秀共青团员 · 乙等奖学金</div>
-            <div class="award-level">校级</div>
-        </div>
-    </div>
-</section>
+<div class="section-wrap" id="awards">
+  <div class="section-title">🏆 Honors &amp; Awards</div>
+  <ul class="award-list">
+    <li>
+      <span class="award-name">1st Prize · 4th National Smart City &amp; Intelligent Construction Innovation Competition</span>
+      <span class="award-level">National · 2024</span>
+    </li>
+    <li>
+      <span class="award-name">Silver Award (×2) · 8th "Internet+" Innovation Competition (Chongqing)</span>
+      <span class="award-level">Provincial · 2023</span>
+    </li>
+    <li>
+      <span class="award-name">Planetary-Level Work · 18th "Challenge Cup" Black Technology Special Track</span>
+      <span class="award-level">Provincial · 2023</span>
+    </li>
+    <li>
+      <span class="award-name">2nd Prize · iCAN Innovation Competition (Chongqing)</span>
+      <span class="award-level">Provincial · 2023</span>
+    </li>
+    <li>
+      <span class="award-name">Excellent Completion · Chongqing Municipal Entrepreneurship Practice Project</span>
+      <span class="award-level">Provincial · 2023</span>
+    </li>
+    <li>
+      <span class="award-name">Outstanding Graduate · Outstanding Communist Youth League Member · Merit Scholarship</span>
+      <span class="award-level">University · 2025</span>
+    </li>
+  </ul>
+</div>
 
-<hr class="full-hr">
+<!-- SKILLS -->
+<div class="section-wrap" id="skills">
+  <div class="section-title">🛠 Skills</div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-name">Research Methods</div>
+      <div class="skill-tags">
+        <span class="stag">Semi-structured Interview</span>
+        <span class="stag">Questionnaire Design</span>
+        <span class="stag">Thematic Analysis</span>
+        <span class="stag">User Experiment</span>
+        <span class="stag">ANOVA / LMM</span>
+        <span class="stag">A/B Testing</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-name">Product</div>
+      <div class="skill-tags">
+        <span class="stag">PRD Writing</span>
+        <span class="stag">User Research</span>
+        <span class="stag">MVP Definition</span>
+        <span class="stag">Competitive Analysis</span>
+        <span class="stag">Agile / Jira</span>
+        <span class="stag">Cross-team Collaboration</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-name">Design &amp; Prototyping</div>
+      <div class="skill-tags">
+        <span class="stag">Figma</span>
+        <span class="stag">Mockingbot (墨刀)</span>
+        <span class="stag">TouchDesigner</span>
+        <span class="stag">HTML/CSS</span>
+        <span class="stag">Photoshop</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-name">Data &amp; AI Tools</div>
+      <div class="skill-tags">
+        <span class="stag">Python</span>
+        <span class="stag">SQL</span>
+        <span class="stag">SPSS</span>
+        <span class="stag">Prompt Engineering</span>
+        <span class="stag">Coze / Dify</span>
+        <span class="stag">Midjourney</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-name">Language &amp; Credentials</div>
+      <div class="skill-tags">
+        <span class="stag">Chinese (Native)</span>
+        <span class="stag">English (IELTS 6.5)</span>
+        <span class="stag">Legal Professional Cert.</span>
+        <span class="stag">CET-6 542</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- CONTACT -->
-<section id="contact">
-    <div class="section-label reveal">Contact</div>
-    <div class="contact-grid reveal">
-        <div class="contact-cell">
-            <div class="contact-type">Email</div>
-            <div class="contact-value">19947823701@163.com</div>
-        </div>
-        <div class="contact-cell">
-            <div class="contact-type">Phone / WeChat</div>
-            <div class="contact-value">(+86) 199-4782-3701</div>
-        </div>
-        <div class="contact-cell">
-            <div class="contact-type">WeChat ID</div>
-            <div class="contact-value">cxy1286381415</div>
-        </div>
-        <div class="contact-cell">
-            <div class="contact-type">GitHub</div>
-            <div class="contact-value"><a href="https://github.com/XinyiChen899" target="_blank">@XinyiChen899</a></div>
-        </div>
-        <div class="contact-cell">
-            <div class="contact-type">Location</div>
-            <div class="contact-value">广州 · 南沙</div>
-        </div>
-    </div>
-</section>
-
-<hr class="full-hr">
+<div class="section-wrap" id="contact">
+  <div class="section-title">✉️ Contact</div>
+  <div class="contact-line">
+    📧 Email: <a href="mailto:19947823701@163.com">19947823701@163.com</a><br>
+    💻 GitHub: <a href="https://github.com/XinyiChen899" target="_blank">github.com/XinyiChen899</a><br>
+    📱 Phone / WeChat: (+86) 199-4782-3701 · WeChat ID: <code>cxy1286381415</code><br>
+    📍 Location: Guangzhou, Nansha, China
+  </div>
+</div>
 
 <footer>
-    <p>© 2026 Xinyi Chen</p>
-    <p>Last updated May 2026</p>
+  <p>© 2026 Xinyi Chen · Last updated May 2026 · <a href="https://XinyiChen899.github.io">XinyiChen899.github.io</a></p>
 </footer>
-
-<script>
-    // Nav mobile
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => navLinks.classList.remove('open'));
-    });
-
-    // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-    reveals.forEach(el => obs.observe(el));
-</script>
 
 </body>
 </html>
